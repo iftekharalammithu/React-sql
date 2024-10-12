@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 const mysql = require("mysql");
+require("dotenv").config();
 
 const cors = require("cors");
 app.use(cors());
@@ -13,11 +14,11 @@ app.get("/", (req, res) => {
 });
 
 const db = mysql.createConnection({
-  host: "sql12.freesqldatabase.com",
-  user: "sql12737343",
-  password: "m3LAFHk42i",
-  database: "sql12737343",
-  port: 3306,
+  host: process.env.host,
+  user: process.env.user,
+  password: process.env.password,
+  database: process.env.database,
+  port: process.env.port,
 });
 
 db.connect((err) => {
